@@ -161,6 +161,10 @@ defmodule AshTypescript.Codegen.SchemaCore do
       module && Map.has_key?(formatter.third_party_types(), module) ->
         Map.get(formatter.third_party_types(), module)
 
+      module && Code.ensure_loaded?(module) &&
+          function_exported?(module, :typescript_format_type, 1) ->
+        module.typescript_format_type(formatter)
+
       module && Introspection.is_custom_type?(module) ->
         storage_derived_schema(formatter, module)
 

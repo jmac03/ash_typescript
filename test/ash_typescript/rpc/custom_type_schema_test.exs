@@ -13,7 +13,8 @@ defmodule AshTypescript.Rpc.CustomTypeSchemaTest do
 
   1. `zod_mapping_overrides` / `valibot_mapping_overrides` config
   2. the in-tree accept-lists (`simple_primitives`, `third_party_types`)
-  3. a schema derived from the type's `storage_type/1`
+  3. the type's `typescript_format_type/1` callback
+  4. a schema derived from the type's `storage_type/1`
   """
   use ExUnit.Case, async: false
 
